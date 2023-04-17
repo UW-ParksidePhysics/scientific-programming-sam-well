@@ -279,28 +279,59 @@ matrix_operations(i1, i2, i3, initial_position_list, initial_velocity_magnitude_
 # # Draft code comments
 #
 # Does the code run without error?
+# - No error when initial positions are unique
 # If any error occurs, can you suggest a potential fix?
+# - When initial positions are not unique:
+#     - Divide by zero
+#     - Invalid value in scalar multiply error
+#     - Invalid value encountered in det
+#   The magnitude value in line 73 is zero, so you would have to work back
+#   from there.
 #
 # How understandable is the output of the code?
 # Point out any parts you do not understand.
+# - No visible points on plot
 #
 # How readable is the code itself?
 # Say where formatting or commenting would make the code more readable or where PEP-8 is violated.
+# - Generally easy to read
+# - Many single lines that could be broken into multiple lines
+# - The matrix_operations function could be abstracted into a separate module
+# - Command line I/O could be refactored or abstracted for ease of reading
 #
 # How clearly do the code comments describe the problem it is trying to solve?
 # Identify places that would benefit from a clearer comment.
+# - Comments are useful. Some could be reformatted in a header/content style
+#   to aid in readability. Ex:
+#       # main function for simulation
+#       #     all x and y positions in m
+#       #     all accelerations in m/s^2
+#       #     all velocities in m/s
 #
 # How clearly do the variable names relate to the concepts they concretize?
 # Point out any variables you don't recognize, and/or suggest better names. Check for PEP-8 compliance.
+# - Most variable names are specific. Some that could be more specific are
+#   the user input values during prompting, such as v1, a1, p1.
+#   In smaller loops or functions this is usually fine, but with the prompt
+#   section's size and placement in the base scope, it would benefit from
+#   greater specificity.
 #
 # How well does the range of variables capture the problem described?
 # Identify extraneous regions that could be left out or important regions that should be included.
+# - Prompting section could be refactored using a function that encapsulates
+#   reoccurring behavior, thereby reducing the amount of user input variables
+#   explicitly written.
 #
 # To what degree does the script follow a functional programming paradigm, packaging all major components of the script
 # into separately defined functions that pass information among them in a small number of lines? Identify ways in which
 # the functionalization of the code could be improved.
+# - As mentioned earlier, the matrix_operations function and the prompting
+#   section would benefit from abstraction and refactoring.
+#
 # How clearly do the visualizations show the solutions to the problem?
+# - Currently, only scale is displayed. Lacking visible plot points.
 #
 # Say if there is extraneous whitespace or the co-domain or domain of the data should be changed or any other ways the
 # visualizations could be more effective
+# - Currently, only scale is displayed. Lacking visible plot points.
 #

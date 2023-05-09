@@ -24,18 +24,20 @@ def annotate_plot(annotations):
             Value of the font size in pixels
     :return:
     """
-    plt.text(annotations['position'][0], annotations['position'][1], annotations['string'],
-             horizontalalignment=annotations['alignment'][0], verticalalignment=annotations['alignment'][1],
-             fontsize=annotations['fontsize'])
+    plt.annotate(annotations['string'],
+                 annotations['position'],
+                 xycoords='figure fraction',
+                 horizontalalignment=annotations['alignment'][0],
+                 verticalalignment=annotations['alignment'][1],
+                 fontsize=annotations['fontsize'])
 
 
 if __name__ == "__main__":
     from datetime import datetime
     import numpy as np
     annotations = {'string': f"Created by {__author__} {datetime.today().isoformat()}",
-                   'position': np.array([4.75, 9.5]), 'alignment': ['left', 'bottom'], 'fontsize': 10}
+                   'position': np.array([0, 0]),
+                   'alignment': ['left', 'bottom'], 'fontsize': 10}
     plt.plot(5, 10)
-    plt.text(x=annotations['position'][0], y=annotations['position'][1], s=annotations['string'],
-             horizontalalignment=annotations['alignment'][0], verticalalignment=annotations['alignment'][1],
-             fontsize=annotations['fontsize'])
+    annotate_plot(annotations)
     plt.show()

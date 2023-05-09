@@ -5,6 +5,7 @@ Calculate statistical characteristics of a data set using SciPy's stats.describe
 __author__ = 'Sam Rodriguez'
 
 import scipy as sp
+from scipy import stats
 import numpy as np
 
 
@@ -18,7 +19,7 @@ def calculate_bivariate_statistics(data, axis=1):
     """
     # data = read_two_columns_text
     try:
-        statistics = sp.stats.describe(data, axis)
+        statistics = stats.describe(data, axis)
         select_statistics = np.array([statistics.mean[1], statistics.variance[1], statistics.minmax[0][0],
                                       statistics.minmax[1][0], statistics.minmax[0][1], statistics.minmax[1][1]])
     except IndexError as error:
